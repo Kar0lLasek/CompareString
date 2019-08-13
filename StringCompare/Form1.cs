@@ -53,16 +53,11 @@ namespace StringCompare
             }
             int longerLength = longer.Length;
             if (longerLength == 0) { return 1.0; /* both strings are zero length */ }
-            /* // If you have Apache Commons Text, you can use it to calculate the edit distance:
-            LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
-            return (longerLength - levenshteinDistance.apply(longer, shorter)) / (double) longerLength; */
             distance = editDistance(longer, shorter);
             return (longerLength - distance) / (double)longerLength;
 
         }
 
-        // Example implementation of the Levenshtein Edit Distance
-        // See http://rosettacode.org/wiki/Levenshtein_distance#Java
         public static int editDistance(string s1, string s2)
         {
             s1 = s1.ToLower();
@@ -139,8 +134,8 @@ namespace StringCompare
             {
                 // Create a string array with the lines of text
                 string lines = richTextBox1.Text + " is the similarity between" + System.Environment.NewLine
-                        + input1 + System.Environment.NewLine
-                        + input2 + System.Environment.NewLine;
+                        + input1 + Environment.NewLine
+                        + input2 + Environment.NewLine;
 
                 // Set a variable to the Documents path.
                 string docPath =
@@ -161,8 +156,8 @@ namespace StringCompare
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt"), true))
                 {
                     outputFile.WriteLine(richTextBox1.Text + " is the similarity between" + System.Environment.NewLine 
-                        + input1 + System.Environment.NewLine 
-                        + input2 + System.Environment.NewLine);
+                        + input1 + Environment.NewLine 
+                        + input2 + Environment.NewLine);
                 }
             }
                 
